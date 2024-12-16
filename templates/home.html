@@ -1,0 +1,25 @@
+<!-- templates/base.html -->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+  {% if user.is_authenticated %}
+    <p>Hi {{ user.username }}!</p>
+    <a href="{% url 'logout' %}">Log Out</a>
+  {% else %}
+    <p>You are not logged in</p>
+    <a href="{% url 'login' %}">Log In</a> | <a href="{% url 'signup' %}">Sign Up</a>
+  {% endif %}
+
+  <h2>Blog Posts</h2>
+    {% for post in post_list %}
+      <div class="post-entry">
+        <h3><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h3>
+        <p>{{ post.content }}</p>
+      </div>
+    {% empty %}
+      <li>No posts available.</li>
+    {% endfor %}
+    <p><a href="{% url 'post_create' %}">Add New Post</a></p>
+{% endblock content %}

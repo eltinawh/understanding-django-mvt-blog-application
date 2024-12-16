@@ -1,0 +1,42 @@
+<!-- templates/base.html -->
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Django Blog - {% block title %}{% endblock title %}</title>
+    <style>
+      header {
+        border-bottom: 1px solid #999;
+        margin-bottom: 2rem;
+        display: flex;
+      }
+      
+      header h1 a {
+          color: green;
+          text-decoration: none;
+      }
+      
+      .nav-left {
+          margin-right: auto;
+      }
+      
+      .nav-right {
+          display: flex;
+          padding-top: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="nav-left">
+          <h1><a href="{% url 'home' %}">Django blog</a></h1>
+      </div>
+      <div class="nav-right">
+          <a href="{% url 'post_create' %}">+ New Blog Post</a>
+      </div>
+    </header>
+    <main>
+      {% block content %}
+      {% endblock content %}
+    </main>
+  </body>
+</html>

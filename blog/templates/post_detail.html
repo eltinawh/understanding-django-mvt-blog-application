@@ -1,0 +1,17 @@
+<!-- blog/templates/post_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}Post Detail{% endblock title %}
+
+{% block content %}
+  <h2>{{ post.title }}</h2>
+  <p>by {{ post.author }} on {{ post.created_at }}</p>
+  <p>{{ post.content }}</p>
+
+
+  {% if request.user == post.author %}
+    <a href="{% url 'post_edit' pk=post.pk %}">Edit</a> |
+    <a href="{% url 'post_delete' pk=post.pk %}">Delete</a> |
+  {% endif %}
+  <a href="{% url 'home' %}">Back to Post List</a>
+{% endblock %}
