@@ -19,7 +19,7 @@ We will use Django version >=5.1.
 git clone https://github.com/eltinawh/understanding-django-mvt-blog-application.git
 
 # navigate to the project directory
-cd blog
+cd understanding-django-mvt-blog-application
 ```
 
 ### 2. Set up a virtual environment
